@@ -44,11 +44,8 @@ The projects are organized into the following categories:
 
 Here are some standout projects from each category:
 
-- **Websites**: [Charity Website](./Websites/CharityWebsite)
-- **Software**: [Productivity Tracker](./Software/ProductivityTracker)
-- **Video Games**: [2D Platformer Game](./Video_Games/PlatformerGame)
-- **Data Science**: [Data Analysis on E-commerce Sales](./Data_Science/EcommerceSalesAnalysis)
-- **AI Projects**: [Image Classifier with CNN](./AI_Projects/ImageClassifier)
+- **Websites**: [HopeLebanon](./Websites/HopeLebanon)
+- **Video Games**: [CrystalHearts](./Video_Games/aspteam4-main)
 
 ## 🛠️ Skills Demonstrated
 
