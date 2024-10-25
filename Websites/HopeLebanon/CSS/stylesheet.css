@@ -1,0 +1,308 @@
+/* General Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ffffff; /* Light background for the whole website */
+    font-family: Arial, Helvetica, sans-serif; /* Consistent font throughout the site */
+    padding: 20px; /* Adds overall spacing for the body */
+    color: #333333;
+}
+
+/* Header and Title Styling */
+header {
+    background-color: white; /* Adjusted header color */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem; /* Larger font size for the title */
+    color: rgb(255, 255, 255); /* Title color */
+    margin-bottom: 20px; /* Spacing below the title */
+    background-color: #007BFF;
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: #0056b3; /* Darker background color for contrast */
+    padding: 10px 0;
+    border-radius: 8px; /* Rounded borders */
+    margin-bottom: 20px; /* Spacing below the navigation bar */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensure wrapping on smaller screens*/
+    overflow: hidden;
+}
+
+nav button {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px; /* Rounded borders for buttons */
+}
+
+nav button:hover {
+    background-color: #0056b3;
+}
+
+/* Main Content and Side List Layout */
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Adds space below the main content area */
+}
+
+
+.content {
+    flex: 3; /* Allows the content area to take more space */
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-right: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Styling donation list */
+.side-list {
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.side-list h3, .donation-section h4 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.donation-section h4 {
+    margin-top: 20px; /* Adds space above section headers for separation */
+}
+
+.side-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-list li {
+    margin-bottom: 8px;
+}
+
+.side-list li a {
+    display: block;
+    padding: 8px 10px;
+    background-color: #e7e7e7;
+    color: #007BFF;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.side-list li a:hover {
+    background-color: #d0d0d0;
+}
+
+/* Footer Styling */
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #60a7f3; /* Color that complements the header */
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media only screen and (min-width: 1024px) {
+    /* Desktop-specific styles */
+    .title {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Tablet-specific styles */
+    .nav button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .content, .side-list {
+        margin-right: 10px;
+    }
+
+    .main {
+        flex-direction: row;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Mobile-specific styles */
+    nav, main, footer {
+        flex-direction: column;
+    }
+
+    nav button {
+        width: 100%; /* Full width buttons in mobile view */
+        margin-bottom: 5px 0; /* adjusts spacing for stacked buttons*/
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .content, .side-list {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    .side-list {
+        order: -1; /* Places the donation list above content in mobile view */
+    }
+
+    footer{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer p {
+        margin: 10px 0;
+    }
+
+    .section {
+        flex-direction: column;
+        align-items: center; /* Center-aligns the content for a cleaner look on small screens */
+    }
+
+    .section img {
+        width: 100%; /* Allows the image to expand and fit the container */
+        max-width: 200px; /* Ensures the image does not become too large */
+        height: auto; /* Maintains the aspect ratio of the image */
+    }
+
+    .ngos-container {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+
+    .links-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* Section specific styling */
+/* CSS styling for Home page*/
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.text-content{
+    flex: 1;
+    margin-left: 20px;
+}
+.section img{
+    width:200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Section for Aid section */
+.map-container {
+    display: flex;
+    justify-content: center; /* Centers the map horizontally */
+    align-items: center; /* Centers the map vertically */
+    height: 400px; /* Or any desired height */
+    margin-bottom: 20px; /* Adds some space below the map */
+}
+
+.links-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.links-container a {
+    background-color: #f2f2f2;
+    color: #007BFF;
+    padding: 10px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.links-container a:hover {
+    background-color: #e0e0e0;
+}
+
+/* NGOs Section */
+.ngos-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Spacing between entries */
+    padding: 20px;
+}
+
+.ngo {
+    background-color: #f9f9f9; /* Light background for each entry */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensures nothing spills out of the container */
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+}
+
+.ngo img {
+    width: 100%; /* Makes the image responsive */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 8px 8px 0 0; /* Rounds the top corners */
+    object-fit: cover; /* Ensures the image covers the area */
+}
+
+.ngo h3 {
+    color: #007BFF; /* Title color */
+    margin: 10px 0;
+}
+
+.ngo p {
+    color: #333; /* Paragraph text color */
+    margin-bottom: 15px;
+}
+
+.ngo a {
+    display: inline-block; /* Allows for padding and margin */
+    background-color: #007BFF; /* Link/button background color */
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none; /* Removes underline */
+    border-radius: 4px; /* Rounded corners for the link/button */
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+.ngo a:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/*
