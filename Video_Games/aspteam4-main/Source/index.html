@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Hearts Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="gameMusic" loop>
+        <source src="/assets/music-loop.wav" type="audio/wav">
+        Your browser does not support the audio element.
+        <!-- Arcade Music Loop.wav by joshuaempyre -- https://freesound.org/s/251461/ -- License: Attribution 4.0 -->
+    </audio>
+
+    <audio id="touchSound">
+        <source src="/assets/touch.aac" type="audio/aac">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="nextSound">
+        <source src="/assets/next.aac" type="audio/aac">
+        Your browser does not support the audio element.
+    </audio>
+      
+    <div id="gameContainer">
+        <h1 id="gameTitle">Crystal Hearts</h1>
+        <p id="gameInstructions" hidden>
+            Instructions: <br>
+            Gems states: yellow (good), orange(degraded), red(very degraded) and black (broken).<br>
+            Clicking on a gem will heal it to a better state. Black gems require 2 clicks to heal.<br>
+            Yellow gems can be supercharged by clicking twice on them. They become blue.<br>
+            Supercharged gems can be clicked to heal all gems around them. But they decay to orange state.<br>
+            Healing gems give you points, but careful, you only have 5 clicks per turn.<br>
+            Every turn, some gems will decay to a worse state. But a smaller number of gems will heal.<br>
+            Difficulty level increase the number of gems that decay every turn.<br>
+            Game is over after 10 turns or when you have 10 or more black gems in the grid.<br>
+        </p>
+
+        <!-- Slider for volume control -->
+        <div id="slideContainer">
+            <p id="volumeText" disabled hidden>Volume</p>
+            <input id="volumeSlider" type="range" min="0" max="1" value="1" step="0.1" disabled hidden>
+        </div>
+
+        <!-- Header with score, healing counter, and difficulty in horizontal layout -->
+        <div id="headerContainer">
+            <div id="score" hidden>Score: 0</div>
+            <div id="healCounter" hidden>Healing Clicks: 10</div>
+            <div id="remainingTurns" hidden>Remaining Turns: 10</div>
+            <div id="difficultySelectContainer" hidden>
+                <label for="difficultySelect">Difficulty:</label>
+                <select id="difficultySelect">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Grid container with yellow border and skyblue background -->
+    <div id="gridContainer"></div>
+
+        <!-- Next Turn button centered below the grid -->
+        <button id="startButton">Start game</button>
+        <button id="nextTurnButton" onclick="playNext()" disabled hidden>Next Turn</button>
+    </div>
+
+
+    <script src="crystalHeart.js"></script>
+    <script src="grid.js"></script>
+    <script src="player.js"></script>
+    <script src="game.js"></script>
+    <script src="gamesettings.js"></script>
+    <script src="scoremanager.js"></script>
+    <script src="UI.js"></script>
+    <script>
+        let game;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const difficultySelectElement = document.getElementById('difficultySelect');
+            const nextTurnButton = document.getElementById('nextTurnButton');  // This should find the button
+
+            if (difficultySelectElement) {
+                difficultySelectElement.addEventListener('change', function() {
+                    game.settings.setDifficulty(this.value);
+                });
+            } else {
+                console.error("Difficulty dropdown not found in the DOM.");
+            }
+
+            if (nextTurnButton) {
+                nextTurnButton.addEventListener('click', () => {
+                    game.nextTurn();
+                });
+            } else {
+                console.error("Next Turn button not found in the DOM.");
+            }
+
+            const slider = document.getElementById('volumeSlider');
+            const music = document.getElementById('gameMusic');
+            slider.addEventListener('input', () => {
+                music.volume = slider.value;
+            });
+
+            if (startButton) {
+                startButton.addEventListener('click', () => {
+                    game = new Game(5, difficultySelectElement ? difficultySelectElement.value : "easy");
+                    game.startGame();
+
+                    document.getElementById("gridContainer").style.visibility = "visible";
+                    document.getElementById("nextTurnButton").disabled = false;
+                    document.getElementById("nextTurnButton").hidden = false;
+                    document.getElementById("startButton").disabled = true;
+                    document.getElementById("startButton").hidden = true;
+
+                    document.getElementById("gameInstructions").hidden = false;
+                    document.getElementById("score").hidden = false;
+                    document.getElementById("healCounter").hidden = false;
+                    document.getElementById("remainingTurns").hidden = false;
+                    document.getElementById("difficultySelectContainer").hidden = false;
+
+                    var gameMusic = document.getElementById("gameMusic"); 
+                    gameMusic.play(); 
+                });
+            } else {
+                console.error("Start Game button not found in the DOM.");
+            }
+        });
+
+        var nextSound = document.getElementById("nextSound"); 
+        function playNext()
+        { 
+            nextSound.play(); 
+        };
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

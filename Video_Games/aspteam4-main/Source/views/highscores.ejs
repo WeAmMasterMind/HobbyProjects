@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  type="text/css" href="/style.css" />
+        <title>High Scores</title>
+    </head>
+
+    <body>
+        <div class="leaderboard">
+        <h1 class="hs_title">High scores</h1>
+
+            <% scores.forEach(function(score){ %>
+                    <h2><%= score.user_name %> &emsp; <%= score.user_score %></h2>
+            <% }) %>
+
+            <form method="GET" action="/">
+                <button class="new"> New Game </button>
+            </form>
+        </div>
+
+    </body>
+
+</html>
